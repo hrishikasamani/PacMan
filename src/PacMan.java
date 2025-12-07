@@ -26,6 +26,7 @@ public class PacMan extends JPanel {
             this.startY = startY;
         }
     }
+
     private int rowCount = 21;
     private int columnCount = 19;
     private int tileSize = 32;
@@ -42,6 +43,9 @@ public class PacMan extends JPanel {
     private Image pacmanDownImage;
     private Image pacmanLeftImage;
     private Image pacmanRightImage;
+
+    HashSet<Block> walls;
+    HashSet<Block> foods;
 
     PacMan() {
         setPreferredSize(new Dimension(boardWidth, boardHeight));
