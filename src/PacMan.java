@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Random;
 import javax.swing.*;
 
-public class PacMan extends JPanel {  
+public class PacMan extends JPanel implements ActionListener {  
     
     class Block {
         int x;
@@ -73,6 +73,8 @@ public class PacMan extends JPanel {
     HashSet<Block> ghosts;
     Block pacman;
 
+    Timer gameLoop;
+
     PacMan() {
         setPreferredSize(new Dimension(boardWidth, boardHeight));
         setBackground(Color.BLACK);
@@ -92,6 +94,8 @@ public class PacMan extends JPanel {
         pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
 
         loadMap();
+        gameLoop = new Timer(50, this);
+        gameLoop.start();
     }
 
     public void loadMap() {
@@ -166,5 +170,10 @@ public class PacMan extends JPanel {
         for (Block food : foods) {
             g.fillRect(food.x, food.y, food.width, food.height);
         }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
     }
 }
