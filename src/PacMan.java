@@ -81,21 +81,30 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         addKeyListener(this);
         setFocusable(true);
 
-        //load images
-        wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
-        blueGhostImage = new ImageIcon(getClass().getResource("./blueGhost.png")).getImage();
-        orangeGhostImage = new ImageIcon(getClass().getResource("./orangeGhost.png")).getImage();
-        pinkGhostImage = new ImageIcon(getClass().getResource("./pinkGhost.png")).getImage();
-        redGhostImage = new ImageIcon(getClass().getResource("./redGhost.png")).getImage();
-
-        pacmanUpImage = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
-        pacmanDownImage = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
-        pacmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
-        pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
+        wallImage = loadImage("/wall.png");
+        blueGhostImage = loadImage("/blueGhost.png");
+        orangeGhostImage = loadImage("/orangeGhost.png");
+        pinkGhostImage = loadImage("/pinkGhost.png");
+        redGhostImage = loadImage("/redGhost.png");
+        pacmanUpImage = loadImage("/pacmanUp.png");
+        pacmanDownImage = loadImage("/pacmanDown.png");
+        pacmanLeftImage = loadImage("/pacmanLeft.png");
+        pacmanRightImage = loadImage("/pacmanRight.png");
 
         loadMap();
         gameLoop = new Timer(50, this);
         gameLoop.start();
+    }
+
+    private Image loadImage(String path) {
+        java.net.URL imgUrl = getClass().getResource(path);
+        if (imgUrl != null) {
+            System.out.println("Loaded: " + path);
+            return new ImageIcon(imgUrl).getImage();
+        } else {
+            System.err.println("ERROR: Could not find image: " + path);
+            return null;
+        }
     }
 
     public void loadMap() {
@@ -112,36 +121,29 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                 int y = r*tileSize;
 
                 if (tileMapChar == 'X') {
-                    //block wall
                     Block wall = new Block(wallImage, x, y, tileSize, tileSize);
                     walls.add(wall);
                 }
                 else if (tileMapChar == 'b') {
-                    //blue ghost
                     Block ghost = new Block(blueGhostImage, x, y, tileSize, tileSize);
                     ghosts.add(ghost);
                 }
                 else if (tileMapChar == 'o') {
-                    //orange ghost
                     Block ghost = new Block(orangeGhostImage, x, y, tileSize, tileSize);
                     ghosts.add(ghost);
                 }
                 else if (tileMapChar == 'p') {
-                    //pink ghost
                     Block ghost = new Block(pinkGhostImage, x, y, tileSize, tileSize);
                     ghosts.add(ghost);
                 }
                 else if (tileMapChar == 'r') {
-                    //red ghost
                     Block ghost = new Block(redGhostImage, x, y, tileSize, tileSize);
                     ghosts.add(ghost);
                 }
                 else if (tileMapChar == 'P') {
-                    //pacman
                     pacman = new Block(pacmanRightImage, x, y, tileSize, tileSize);
                 }
                 else if (tileMapChar == ' ') {
-                    //food
                     Block food = new Block(null, x + 14, y + 14, 4, 4);
                     foods.add(food);
                 }
