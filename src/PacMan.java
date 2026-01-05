@@ -63,6 +63,11 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                 this.velocityY = 0;
             }
         }
+
+        void reset() {
+            this.x = this.startX;
+            this.y = this.startY;
+        }
     }
 
     private int rowCount = 21;
