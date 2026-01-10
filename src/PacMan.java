@@ -22,8 +22,8 @@ public class PacMan extends JPanel {
             this.y = y;
             this.width = width;
             this.height = height;
-            this.startX = startX;
-            this.startY = startY;
+            this.startX = x;
+            this.startY = y;
         }
     }
 
@@ -78,16 +78,18 @@ public class PacMan extends JPanel {
         setBackground(Color.BLACK);
 
         //load images
-        wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
-        blueGhostImage = new ImageIcon(getClass().getResource("./blueGhost.png")).getImage();
-        orangeGhostImage = new ImageIcon(getClass().getResource("./orangeGhost.png")).getImage();
-        pinkGhostImage = new ImageIcon(getClass().getResource("./pinkGhost.png")).getImage();
-        redGhostImage = new ImageIcon(getClass().getResource("./redGhost.png")).getImage();
+        wallImage = new ImageIcon(getClass().getResource("/wall.png")).getImage();
+        blueGhostImage = new ImageIcon(getClass().getResource("/blueGhost.png")).getImage();
+        orangeGhostImage = new ImageIcon(getClass().getResource("/orangeGhost.png")).getImage();
+        pinkGhostImage = new ImageIcon(getClass().getResource("/pinkGhost.png")).getImage();
+        redGhostImage = new ImageIcon(getClass().getResource("/redGhost.png")).getImage();
 
-        pacmanUpImage = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
-        pacmanDownImage = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
-        pacmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
-        pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
+        pacmanUpImage = new ImageIcon(getClass().getResource("/pacmanUp.png")).getImage();
+        pacmanDownImage = new ImageIcon(getClass().getResource("/pacmanDown.png")).getImage();
+        pacmanLeftImage = new ImageIcon(getClass().getResource("/pacmanLeft.png")).getImage();
+        pacmanRightImage = new ImageIcon(getClass().getResource("/pacmanRight.png")).getImage();
+
+        loadMap();
     }
 
     public void loadMap() {
