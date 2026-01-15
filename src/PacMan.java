@@ -76,18 +76,20 @@ public class PacMan extends JPanel {
     PacMan() {
         setPreferredSize(new Dimension(boardWidth, boardHeight));
         setBackground(Color.BLACK);
+        addKeyListener(this);
+        setFocusable(true);
 
         //load images
-        wallImage = new ImageIcon(getClass().getResource("/wall.png")).getImage();
-        blueGhostImage = new ImageIcon(getClass().getResource("/blueGhost.png")).getImage();
-        orangeGhostImage = new ImageIcon(getClass().getResource("/orangeGhost.png")).getImage();
-        pinkGhostImage = new ImageIcon(getClass().getResource("/pinkGhost.png")).getImage();
-        redGhostImage = new ImageIcon(getClass().getResource("/redGhost.png")).getImage();
+        wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
+        blueGhostImage = new ImageIcon(getClass().getResource("./blueGhost.png")).getImage();
+        orangeGhostImage = new ImageIcon(getClass().getResource("./orangeGhost.png")).getImage();
+        pinkGhostImage = new ImageIcon(getClass().getResource("./pinkGhost.png")).getImage();
+        redGhostImage = new ImageIcon(getClass().getResource("./redGhost.png")).getImage();
 
-        pacmanUpImage = new ImageIcon(getClass().getResource("/pacmanUp.png")).getImage();
-        pacmanDownImage = new ImageIcon(getClass().getResource("/pacmanDown.png")).getImage();
-        pacmanLeftImage = new ImageIcon(getClass().getResource("/pacmanLeft.png")).getImage();
-        pacmanRightImage = new ImageIcon(getClass().getResource("/pacmanRight.png")).getImage();
+        pacmanUpImage = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
+        pacmanDownImage = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
+        pacmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
+        pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
 
         loadMap();
     }
@@ -141,5 +143,14 @@ public class PacMan extends JPanel {
                 }
             }
         }
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        draw(g);
+    }
+
+    public void draw(Graphics g) {
+        g.drawImage(pacman.image, pacman.x, pacman.y, pacman.width, pacman.height, null);
     }
 }
