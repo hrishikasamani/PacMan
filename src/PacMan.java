@@ -114,6 +114,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     Timer gameLoop;
     char[] directions = {'U', 'D', 'L', 'R'};
     Random random = new Random();
+    int score = 0;
+    int lives = 3;
+    boolean gameOver = false;
 
     PacMan() {
         setPreferredSize(new Dimension(boardWidth, boardHeight));
@@ -255,6 +258,16 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         else if (pacman.x > boardWidth) {
             pacman.x = -pacman.width;
         }
+
+        //check food collisions
+        Block foodEaten = null;
+        for (Block food : foods) {
+            if (collision(pacman, food)) {
+                foodEaten = food;
+                score += 10;
+            }
+        }
+        foods.remove(foodEaten);
     }
 
     public boolean collision(Block a, Block b) {
