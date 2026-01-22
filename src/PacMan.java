@@ -233,16 +233,27 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
         //check ghost collisions
         for (Block ghost : ghosts) {
+            if (ghost.y == tileSize*9 && ghost.direction != 'U' && ghost.direction != 'D') {
+                ghost.updateDirection('U');
+            }
             ghost.x += ghost.velocityX;
             ghost.y += ghost.velocityY;
             for (Block wall : walls) {
-                if (collision(ghost, wall)) {
+                if (collision(ghost, wall) || ghost.x <= 0 || ghost.x + ghost.width >= boardWidth) {
                     ghost.x -= ghost.velocityX;
                     ghost.y -= ghost.velocityY;
                     char newDirection = directions[random.nextInt(4)];
                     ghost.updateDirection(newDirection);
                 }
             }
+        }
+
+        // wrap Pac-Man horizontally
+        if (pacman.x < -pacman.width) {
+            pacman.x = boardWidth;
+        }
+        else if (pacman.x > boardWidth) {
+            pacman.x = -pacman.width;
         }
     }
 
