@@ -87,29 +87,54 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     private Image pacmanLeftImage;
     private Image pacmanRightImage;
 
-    private String[] tileMap = {
-        "XXXXXXXXXXXXXXXXXXX",
-        "X        X        X",
-        "X XX XXX X XXX XX X",
-        "X                 X",
-        "X XX X XXXXX X XX X",
-        "X    X       X    X",
-        "XXXX XXXX XXXX XXXX",
-        "OOOX X       X XOOO",
-        "XXXX X XXrXX X XXXX",
-        "O       bpo       O",
-        "XXXX X XXXXX X XXXX",
-        "OOOX X       X XOOO",
-        "XXXX X XXXXX X XXXX",
-        "X        X        X",
-        "X XX XXX X XXX XX X",
-        "X  X     P     X  X",
-        "XX X X XXXXX X X XX",
-        "X    X   X   X    X",
-        "X XXXXXX X XXXXXX X",
-        "X                 X",
-        "XXXXXXXXXXXXXXXXXXX" 
-    };
+    private String[][] levels = {
+        {   // LEVEL 1
+            "XXXXXXXXXXXXXXXXXXX",
+            "X        X        X",
+            "X XX XXX X XXX XX X",
+            "X                 X",
+            "X XX X XXXXX X XX X",
+            "X    X       X    X",
+            "XXXX XXXX XXXX XXXX",
+            "OOOX X       X XOOO",
+            "XXXX X XXrXX X XXXX",
+            "O       bpo       O",
+            "XXXX X XXXXX X XXXX",
+            "OOOX X       X XOOO",
+            "XXXX X XXXXX X XXXX",
+            "X        X        X",
+            "X XX XXX X XXX XX X",
+            "X  X     P     X  X",
+            "XX X X XXXXX X X XX",
+            "X    X   X   X    X",
+            "X XXXXXX X XXXXXX X",
+            "X                 X",
+            "XXXXXXXXXXXXXXXXXXX"
+        },
+        {   // LEVEL 2 (example: tighter maze)
+            "XXXXXXXXXXXXXXXXXXX",
+            "X   X     X     X X",
+            "X X X XXX X XXX X X",
+            "X X             X X",
+            "X XXX XXXXXXX XXX X",
+            "X     X     X     X",
+            "XXXXX X XXX X XXXXX",
+            "O   X X   r X X   O",
+            "XXX X XXX XXX X XXX",
+            "O     b P o       O",
+            "XXX X XXX XXX X XXX",
+            "O   X X       X   O",
+            "XXXXX X XXXXX X XXXXX",
+            "X        X        X",
+            "X XXX XXX X XXX XXX X",
+            "X   X           X   X",
+            "XXX X XXXXXXX X XXX",
+            "X     X   X   X     X",
+            "X XXX XXX X XXX XXX X",
+            "X                 X",
+            "XXXXXXXXXXXXXXXXXXX"
+        }
+    };    
 
     HashSet<Block> walls;
     HashSet<Block> foods;
